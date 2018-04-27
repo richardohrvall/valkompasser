@@ -6,8 +6,9 @@ library(ggthemes)
 library(viridis)
 library(extrafont)
 #loadfonts(device = "win")
+library(here)
 
-kompass <- read_csv("./data/tt_valkompass_2018.csv") 
+kompass <- read_csv(here("data", "tt_valkompass_2018.csv"))
 
 ggplot(kompass, aes(x=parti, y=reorder(Fråga, desc(Område)), fill=svar)) + geom_tile(color="white", size=0.5) +
     coord_equal() +
@@ -17,7 +18,7 @@ ggplot(kompass, aes(x=parti, y=reorder(Fråga, desc(Område)), fill=svar)) + geo
     theme(axis.ticks=element_blank()) +
     theme(legend.title=element_blank())
 
-ggsave(filename = "./results/tt_valkompass_2018.png", h=5, w=10, dpi = 300, type = "cairo")
+ggsave(filename = here("results", "tt_valkompass_2018.png"), h=5, w=10, dpi = 300, type = "cairo")
 
 # Color blind safe version
 ggplot(kompass, aes(x=parti, y=reorder(Fråga, desc(Område)), fill=svar)) + geom_tile(color="white", size=0.5) +
@@ -28,5 +29,5 @@ ggplot(kompass, aes(x=parti, y=reorder(Fråga, desc(Område)), fill=svar)) + geo
     theme(axis.ticks=element_blank()) +
     theme(legend.title=element_blank())
 
-ggsave(filename = "./results/tt_valkompass_2018_cs.png", h=5, w=10, dpi = 300, type = "cairo")
+ggsave(filename = here("results", "tt_valkompass_2018_cs.png"), h=5, w=10, dpi = 300, type = "cairo")
 
